@@ -6,7 +6,7 @@ ARG HTTP_PROXY=""
 
 ENV https_proxy=${HTTP_PROXY}
 
-RUN amazon-linux-extras install -y docker && yum install -y jq docker-ce && \
+RUN amazon-linux-extras install -y docker && yum install -y jq && \
     yum clean all &&  rm -rf /var/cache/yum
 
 ADD ecr.sh /

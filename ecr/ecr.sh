@@ -28,6 +28,7 @@ function ecr_pull() {
 
 function ecr_push() {
   ecr_login && \
+    echo "$TAGS" | tr "/," "-\n" | xargs -n1 -I % docker pull "$IMAGE:$TAG" && \
     echo "$TAGS" | tr "/," "-\n" | xargs -n1 -I % docker tag "$IMAGE:$TAG" "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/$IMAGE:%" && \
     echo "$TAGS" | tr "/," "-\n" | xargs -n1 -I % docker push "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/$IMAGE:%"
 }
