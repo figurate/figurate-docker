@@ -1,7 +1,5 @@
 SHELL:=/bin/bash
-REGISTRY?=figurate
-TAGS?=latest,alpine
-BUILD_ARGS?=
+include .env
 
 .PHONY: all build tag push
 
